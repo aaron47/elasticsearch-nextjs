@@ -17,16 +17,14 @@ function SearchInput(
   }>
 ) {
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        
-        // avoir la valeur de input avec name="query"
-        const query = new FormData(e.currentTarget).get('query');
-        props.onSearch(query as string);
-      }}
-    >
-      <input name="query" placeholder="Search task..." />
+    <form>
+      <input
+        name="query"
+        placeholder="Search task..."
+        onChange={(e) => {
+          props.onSearch(e.target.value);
+        }}
+      />
 
       <button>Search Tasks</button>
     </form>
@@ -58,3 +56,13 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+// l'exemple a utiliser pour le form onSubmit, chercher seulemnt quand on submit le form
+// onSubmit={(e) => {
+//         e.preventDefault();
+
+//         // avoir la valeur de input avec name="query"
+//         const query = new FormData(e.currentTarget).get('query');
+//         props.onSearch(query as string);
+//       }}
+//       }

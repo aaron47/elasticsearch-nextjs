@@ -6,6 +6,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const client = await getElasticClient();
+  const client = await (await getElasticClient()).search({ index: 'tasks' });
   res.json({ client });
 }

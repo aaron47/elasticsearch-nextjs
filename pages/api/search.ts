@@ -18,18 +18,19 @@ export default async function tasksSearchHandler(
     index: 'tasks',
     query: {
       // On utilise multi_match si on veut chercher dans plusieurs champs, ici name et description, et on mentionne aussi le tie_breaker pour donner plus de poids au nom aussi que le type de match
-      multi_match: {
-        type: 'most_fields',
-        tie_breaker: 0.3,
-        query,
-        fields: ['name', 'description'],
-      },
-      // on utilise match si on veut chercher dans un seul champ (ici name)
-      // match: {
-      //   name: query,
+
+      // multi_match: {
+      //   type: 'most_fields',
+      //   tie_breaker: 0.3,
+      //   query,
+      //   fields: ['name', 'description'],
       // },
 
-      
+      // on utilise match si on veut chercher dans un seul champ (ici name)
+      match: {
+        description: query,
+      },
+
       // bool: {
       //   must: [
       //     {
