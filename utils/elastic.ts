@@ -1,27 +1,3 @@
-## Introduction
-
-Ceci est une application example aussi que mon essaie de integrer ElasticSearch dans NextJS.
-
-## Getting Started
-
-D'abord on doit installer `@elastic/elasticsearch`
-ensuite lancer:
-
-```bash
-npm run dev
-```
-
-## Documentation
-
-Tous le setup est dans le fichier `elastic.ts` ou en trouve la definiton de client elastic search avec les options de authorization, pour cela on doit definir 4 environment variables:
-
-```typescript
-ELASTIC_CLOUD=
-ELASTIC_USERNAME=
-ELASTIC_PASSWORD=
-```
-
-```typescript
 import { ClientOptions } from '@elastic/elasticsearch';
 import { Options } from './types/Options';
 
@@ -73,4 +49,3 @@ function getElasticOptions(): ClientOptions {
     node: DEFAULTS.node,
   };
 }
-```
