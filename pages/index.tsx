@@ -17,8 +17,9 @@ function SearchInput(
   }>
 ) {
   return (
-    <form>
+    <form className="flex gap-x-4">
       <input
+        className="outline-none p-2 border border-purple-500 rounded-md"
         name="query"
         placeholder="Search task..."
         onChange={(e) => {
@@ -26,7 +27,9 @@ function SearchInput(
         }}
       />
 
-      <button>Search Tasks</button>
+      <button className="border rounded-md p-2 border-purple-500">
+        Search Tasks
+      </button>
     </form>
   );
 }
@@ -45,13 +48,13 @@ const Home: NextPage = () => {
   );
 
   return (
-    <>
+    <div className="flex flex-col gap-y-4 items-center h-screen">
       <div>Type below to search for your tasks:</div>
 
       <SearchInput onSearch={onSearch} />
 
       {tasks && tasks.length ? <TasksList tasks={tasks} /> : <NoTaskFound />}
-    </>
+    </div>
   );
 };
 

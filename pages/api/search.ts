@@ -15,6 +15,8 @@ export default async function tasksSearchHandler(
 
   // rechercher le resultat en basant sur le query parameter, pour qu'il match le nom de la task
   const result = await elastic.search({
+    // on doit specifier size pour le nombre de resultats a retourner (default est 10)
+    size: 20,
     index: 'tasks',
     query: {
       // On utilise multi_match si on veut chercher dans plusieurs champs, ici name et description, et on mentionne aussi le tie_breaker pour donner plus de poids au nom aussi que le type de match
@@ -27,7 +29,7 @@ export default async function tasksSearchHandler(
       // },
 
       // on utilise match si on veut chercher dans un seul champ (ici name)
-      match: {
+      match_phrase: {
         description: query,
       },
 
