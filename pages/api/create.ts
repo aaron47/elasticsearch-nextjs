@@ -31,5 +31,7 @@ export default async function handler(
     });
   });
 
+  Promise.all(promises);
+
   res.json({ promises });
 }
